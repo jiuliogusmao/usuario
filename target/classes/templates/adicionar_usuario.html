@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
+
+<title>Adicionar usuario</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"> <img
+					src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+					style="width: 50px">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="/">Início</a></li>
+						<li class="nav-item"><a class="nav-link" href="/usuarios">Listar
+								Usuarios</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarUsuario">Cadastrar Usuario</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<form action="#" th:action="@{/adicionarUsuario}"
+			th:object="${usuario}" class="needs-validation" method="POST"
+			style="margin: 50px auto; width: 400px; padding: 10px 20px">
+
+			<div class="mb-3">
+				<label class="form-label" for="nome">Nome:</label> <input
+					class="form-control" type="text" id="nome" th:field="*{nome}"
+					placeholder="digite um apelido"> <span
+					th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="descricao">E-mail:</label> <input
+					class="form-control" type="text" id="email" th:field="*{email}"
+					placeholder="digite um e-mail válido"> <span
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="quantidade">Senha:</label> <input
+					class="form-control" type="text" id="senha" th:field="*{senha}"
+					placeholder="digite uma senha de no mínimo 8 caracteres"> <span
+					th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Imagem:</label> 
+				<input class="form-control" type="file" id="imagem" th:field="*{imagem}">
+				<span th:if="${#fields.hasErrors('imagem')}" th:errors="*{imagem}"></span>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+
+	</div>
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+</body>
+</html>
