@@ -72,4 +72,11 @@ public class UsuarioController {
 		return "redirect:/usuarios";
 	}
 	
+	@GetMapping("/excluir/{id}")
+	public String deletarUsuario(@PathVariable("id") long id, Model model) {
+		Usuario usuario = usuarioRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Usuário não encontrado." + id));
+		usuarioRepository.delete(usuario);
+		return "redirect:/usuarios";
+	}
+	
 }
